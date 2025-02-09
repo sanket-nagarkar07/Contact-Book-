@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <script>
+        function searchContacts() {
+            let query = document.getElementById("search").value;
+            fetch(`/search?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    let table = document.getElementById("contact-list");
+                    table.innerHTML = "";
+                    data.forEach((contact, index) => {
+                        table.innerHTML += `<tr>
+                            <td>${contact.name}</td>
+                            <td>${contact.phone}</td>
+                            <td>${contact.email}</td>
+                            <td>${contact.address}</td>
+                            <td>
+                                <a href="/edit/${index}" class="btn">Edit</a>
+                                <a href="/delete/${index}" class="btn delete">Delete</a>
+                            </td>
+                        </tr>`;
+                    });
+                });
+        }
+    </script>
+</head>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .btn {
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+    .edit-btn {
+        background-color: #4CAF50;
+        color: white;
+    }
+    .delete-btn {
+        background-color: #f44336;
+        color: white;
+    }
+</style>
+</head>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .btn {
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+    .edit-btn {
+        background-color: #4CAF50;
+        color: white;
+    }
+    .delete-btn {
+        background-color: #f44336;
+        color: white;
+    }
+</style>
+
+<body>
+    <h1>Contact List</h1>
+    <input type="text" id="search" placeholder="Search by name or phone..." onkeyup="searchContacts()">
+    <a href="{{ url_for('add_contact') }}" class="btn btn-success">Add Contact</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+        <tbody id="contact-list">
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.address }}</td>
+                <td>
+                    <a href="{{ url_for('show_contact', index=loop.index0) }}" class="btn btn-primary">View</a>
+                    <!-- <a href="/show_details/{{loop.index}}/show" type="button" class="btn btn-success btn-sm">Show Details</a> -->
+                    <a href="{{ url_for('edit_contact', index=loop.index0) }}" class="btn btn-info">Edit</a>
+                    <a href="{{ url_for('delete_contact', index=loop.index0) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

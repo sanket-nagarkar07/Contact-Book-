@@ -1,0 +1,7 @@
+body { font-family: Arial, sans-serif; text-align: center; }
+h1 { color: #333; }
+input, button { padding: 10px; margin: 5px; }
+table { margin: auto; border-collapse: collapse; width: 80%; }
+th, td { padding: 10px; border: 1px solid #ccc; }
+.btn { background: green; color: white; padding: 5px 10px; text-decoration: none; }
+.btn.delete { background: red; }

@@ -1,0 +1,34 @@
+{
+    "contacts": [
+        {
+            "name": "rohi",
+            "phone": "888888",
+            "email": "rohi@gmail.com",
+            "address": "ydthgd"
+        },
+        {
+            "name": "sanku",
+            "phone": "465638",
+            "email": "ygjhdsb@gmao.com",
+            "address": "gydsh56"
+        },
+        {
+            "name": "rohit",
+            "phone": "54368",
+            "email": "pabkajgurav@gmail.com",
+            "address": "uyjshdgvnb"
+        },
+        {
+            "name": "sanket",
+            "phone": "8766434676",
+            "email": "sanketnagarkar25@gmail.com",
+            "address": "pune"
+        },
+        {
+            "name": "sanket",
+            "phone": "8766434676",
+            "email": "sanketnagarkar25@gmail.com",
+            "address": "pune"
+        }
+    ]
+}

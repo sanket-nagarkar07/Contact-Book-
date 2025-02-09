@@ -1,0 +1,16 @@
+{
+    "contacts": [
+        {
+            "name": "ram ",
+            "phone": "1234567890",
+            "email": "sanket@example.com",
+            "address": "123 Main St, NY"
+        },
+        {
+            "name": "sam",
+            "phone": "222252252",
+            "email": "rohit@example.com",
+            "address": "456 Elm St, CA"
+        }
+    ]
+}
